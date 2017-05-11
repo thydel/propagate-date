@@ -14,5 +14,5 @@ $(installed): $(name).pl; install $< $@
 # So, we can't automate the sequence « newgrp staff; newgrp »
 
 staff := getent group staff > /dev/null || sudo adduser $(USER) staff;
-staff += groups | grep staff > /dev/null || echo -e "source <(echo 'newgrp staff')\nsource <(echo newgrp)";
+staff += groups | grep staff > /dev/null || echo -e "source <(echo 'exec newgrp staff')\nsource <(echo 'exec newgrp')";
 staff:; @$($@)
